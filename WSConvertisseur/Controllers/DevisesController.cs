@@ -50,10 +50,28 @@ namespace WSConvertisseur.Controllers
             return devise;
         }
 
+        [HttpGet("{id}", Name = "GetDevise")]
+        public ActionResult<Devise> DeleteById(int id)
+        {
+            Devise? devise = listDevises.FirstOrDefault((d) => d.Id == id);
+            if (devise == null)
+            {
+                return NotFound();
+            }
+            listDevises.Remove(devise);
+            return devise;
+        }
+
         // POST api/<DevisesController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult<Devise> Post([FromBody] Devise devise)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            listDevises.Add(devise);
+            return CreatedAtRoute("GetDevise", new { id = devise.Id }, devise);
         }
 
         // PUT api/<DevisesController>/5

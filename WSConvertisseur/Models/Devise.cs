@@ -1,4 +1,7 @@
-﻿namespace WSConvertisseur.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.Data.Common;
+
+namespace WSConvertisseur.Models
 {
     public class Devise
     {
@@ -11,7 +14,7 @@
 		}
 
 		private string? nomDevise;
-
+		[Required]
 		public string? NomDevise
         {
 			get { return nomDevise; }
