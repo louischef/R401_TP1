@@ -32,8 +32,11 @@
 
 		}
 
-
-
-
-	}
+        public Devise(int id, string? nomDevise, double taux)
+        {
+            this.Id = id;
+            this.NomDevise = nomDevise;
+            this.Taux = taux;
+        }
+    }
 }
